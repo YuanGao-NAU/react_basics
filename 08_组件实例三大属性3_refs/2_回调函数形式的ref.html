@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1_ref</title>
+</head>
+<body>
+    <div id="test"></div>
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //创建组件
+        class Demo extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <input ref={(currentNode)=>{this.input1 = currentNode}} type="text" placeholder="点击按钮提示数据"/>&nbsp;
+                        <button ref="btn1" onClick={this.showData}>点我提示左侧的数据</button>&nbsp;
+                        <input ref={(currentNode)=>{this.input2 = currentNode}} onBlur={this.showData2} ref="input2" type="text" placeholder="失去焦点提示数据"/>&nbsp;
+                    </div>
+                )
+            }
+
+            //展示左侧输入框数据
+            showData = ()=>{
+                const {input1} = this
+                console.log(input1.value);
+            }
+
+            showData2 = ()=>{
+                const {input2} = this
+                console.log(input2.value);
+            }
+        }
+
+        ReactDOM.render(<Demo/>, document.getElementById("test"));
+    </script>
+</body>
+</html>

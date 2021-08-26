@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_props基本使用</title>
+</head>
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16.8/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16.8/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        //创建组件
+        class Person extends React.Component{
+            //state = {name:'tom', age:18, sex:'女'}
+            render() {
+                const {name, age, sex} = this.props
+                console.log(this);
+                return (
+                    <ul>
+                        <li>姓名:{name}</li>
+                        <li>性别:{sex}</li>
+                        <li>年龄:{age+1}</li>
+                    </ul>
+                )
+            }
+        }
+
+        ReactDOM.render(<Person name="Jerry" age={19} sex="男"/>, document.getElementById("test1"));
+        ReactDOM.render(<Person name="Tom" age={18} sex="女"/>, document.getElementById("test2"));
+
+        const p = {name:'老刘', age:18, sex:'女'}
+        //ReactDOM.render(<Person name={p.name} age={p.age} sex={p.sex}/>, document.getElementById("test3"));
+        ReactDOM.render(<Person {...p}/>, document.getElementById("test3"));
+        // ReactDOM.render(<Person/>, document.getElementById("test2"));
+        // ReactDOM.render(<Person/>, document.getElementById("test3"));
+    </script>
+</body>
+</html>

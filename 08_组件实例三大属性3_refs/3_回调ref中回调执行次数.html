@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3_回调ref中回调执行次数</title>
+</head>
+<body>
+    <div id="test"></div>
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        //创建组件
+        class Demo extends React.Component {
+            render() {
+                const{isHot} = this.state 
+                return (
+                    <div>
+                        <h2>今天天气很{isHot?'炎热':'凉爽'}</h2>
+                        <input ref={(currentNode)=>{this.input1 = currentNode; console.log('@', currentNode)}} type="text"/>&nbsp;
+                        <button ref="btn1" onClick={this.showInfo}>点我提示输入的数据</button>&nbsp;
+                        <button onClick={this.changeWeather}>点我更新天气</button>
+                    </div>
+                )
+            }
+
+            //展示左侧输入框数据
+            showInfo = ()=>{
+                const {input1} = this
+                alert(input1.value);
+            }
+
+            state = {isHot:true}
+
+        }
+
+        ReactDOM.render(<Demo/>, document.getElementById("test"));
+    </script>
+</body>
+</html>

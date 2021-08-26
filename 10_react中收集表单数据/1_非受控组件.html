@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1_非受控组件</title>
+</head>
+<body>
+    <div id="test"></div>
+
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Login extends React.Component{
+            render() {
+                return (
+                    <form onSubmit={this.handleSubmit}>
+                        用户名:<input ref={c => this.username=c} type="text" name="username"></input>
+                        密码：<input ref={c => this.password=c} type="password" name="password"></input>
+                        <button>登录</button>
+                    </form>
+                )
+            }
+
+            handleSubmit = (event)=>{
+                event.preventDefault();
+                const {username, password} = this
+                alert(`你输入的用户名是: ${username.value}, 你输入的密码是: ${password.value}`);
+            }
+        }
+
+        ReactDOM.render(<Login/>, document.getElementById("test"))
+    </script>
+</body>
+</html>

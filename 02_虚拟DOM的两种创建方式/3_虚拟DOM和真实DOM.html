@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>3_虚拟DOM和真实DOM</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        
+        <script crossorigin src="https://unpkg.com/react@16.8/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16.8/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <script type="text/babel">
+            const VDOM = (
+                <h1>
+                    <span>hello, react</span>
+                </h1>
+                )
+            ReactDOM.render(VDOM, document.getElementById('test'));
+
+            const TDOM = document.getElementById('test')
+
+            console.log("虚拟DOM", VDOM);
+            console.log("真实DOM", TDOM);
+        </script>
+
+    </body>
+</html>

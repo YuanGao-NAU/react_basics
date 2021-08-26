@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>1_类的基本知识</title>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            //创建一个person类
+            class Person {
+                //构造器方法
+                constructor(name, age) {
+                    this.name = name;
+                    this.age = age;
+                }
+                //一般方法
+                speak() {
+                    //speak方法放在了哪里？--类的实例对象上，供实例使用
+                    //通过Person实例调用speak时，speak中的this就是Person实例
+                    console.log(`我叫${this.name}， 我年龄是${this.age}`);
+                }
+
+            }
+            
+            //创建一个student类，继承person类
+            class Student extends Person {
+                constructor(name, age, grade) {
+                    super(name, age);
+                    this.grade = grade;
+                }
+
+                speak() {
+                    console.log(`我叫${this.name}， 我年龄是${this.age}, 我读的是${this.grade}`);
+                }
+                study() {
+                    console.log("我很努力的学习！");
+                }
+            }
+
+            class Car {
+                constructor(name, price) {
+                    this.name = name;
+                    this.price = price;
+                    //this.wheel = 4
+                }
+                wheels = 4;
+                static demo = 100;
+            }
+            
+            const c1 = new Car("benz", 199);
+            console.log(c1);
+            console.log(Car.demo);
+
+        </script>
+    </body>
+</html>
