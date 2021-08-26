@@ -97,3 +97,10 @@
 
 ## 函数的柯里化
 通过函数调用继续返回函数的方式，实现多次接收参数最后同意处理的函数编码形式
+
+## 组件生命周期
+- componentDidMount                         //组件挂载后执行一次
+- componentWillUnmount                      //组件卸载前执行一次
+- ReactDOM.unmountComponentAtNode           //卸载组件
+- render                                    //state更新时调用
+
