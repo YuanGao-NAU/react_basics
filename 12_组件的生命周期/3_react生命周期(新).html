@@ -33,10 +33,6 @@
                 this.forceUpdate();
             }
 
-            componentWillMount() {
-                console.log("Count---componentWillMount");
-            }
-
             render() {
                 console.log("Count---render");
                 return(
@@ -47,6 +43,10 @@
                         <button onClick={this.force}>强制更新</button>
                     </div>
                 )
+            }
+
+            componentWillMount() {
+                console.log("Count---componentWillMount");
             }
 
             componentDidMount() {

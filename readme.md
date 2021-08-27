@@ -98,9 +98,21 @@
 ## 函数的柯里化
 通过函数调用继续返回函数的方式，实现多次接收参数最后同意处理的函数编码形式
 
-## 组件生命周期
-- componentDidMount                         //组件挂载后执行一次
-- componentWillUnmount                      //组件卸载前执行一次
-- ReactDOM.unmountComponentAtNode           //卸载组件
-- render                                    //state更新时调用
+## 组件生命周期(旧)
+
+- 初始化阶段：由ReactDOM.render()触发---初次渲染
+  - constructor()
+  - componentWillMount()
+  - render()
+  - componentDidMount()=====>常用，一般在其中做一些初始化，例如：开启定时器、发送网络请求、订阅消息
+- 更新阶段：由组件内部this.setState()或父组件render触发
+  - shouldComponentUpdate()
+  - componentWillUpdate()
+  - render()
+  - componentDidUpdate()
+- 卸载组件：由ReactDOM.unmountComponentAtNode()触发
+  - componentWillUnmount()=====>常用，一般在其中做一些收尾的事，例如：关闭定时器、取消订阅消息
+
+
+
 
