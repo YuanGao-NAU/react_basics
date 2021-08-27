@@ -5,10 +5,10 @@
     <title>Document</title>
 </head>
 <body>
-    <script type="text/javascript" src="../js/react.development.js"></script>
-    <script type="text/javascript" src="../js/react-dom.development.js"></script>
-    <script type="text/javascript" src="../js/babel.min.js"></script>
-
+    <script type="text/javascript" src="../js/17.0.1/react.development.js"></script>
+    <script type="text/javascript" src="../js/17.0.1/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/17.0.1/babel.js"></script>
+    
     <div id="test"></div>
 
     <script type="text/babel">
@@ -33,6 +33,10 @@
                 this.forceUpdate();
             }
 
+            UNSAFE_componentWillMount() {
+                console.log("Count---componentWillMount");
+            }
+
             render() {
                 console.log("Count---render");
                 return(
@@ -43,10 +47,6 @@
                         <button onClick={this.force}>强制更新</button>
                     </div>
                 )
-            }
-
-            componentWillMount() {
-                console.log("Count---componentWillMount");
             }
 
             componentDidMount() {
@@ -62,7 +62,7 @@
                 return true;
             }
 
-            componentWillUpdate() {
+            UNSAFE_componentWillUpdate() {
                 console.log("Count---componentWillUpdate");
             }
 
@@ -73,25 +73,52 @@
         }
 
         class A extends React.Component{
+
+            state = {carName:"奔驰"}
+
+            changeCar = ()=>{
+                this.setState({carName:"奥拓"})
+            }
+
             render() {
                 return(
                     <div>
-                        <div>A</div>
-                        <B/>
+                        <div>我是A组件</div>
+                        <button onClick={this.changeCar}>换车</button>
+                        <B carName={this.state.carName}/>
                     </div>
                 )
             }
         }
 
         class B extends React.Component{
+
+            // componentWillReceiveProps(props) {
+            //     concole.log("B---componentWillReceiveProps", props);
+            // }
+
+            // shouldComponentUpdate() {
+            //     console.log("B---shouldComponentUpdate");
+            //     return true;
+            // }
+
+            // componentWillUpdate() {
+            //     console.log("B---componentWillUpdate");
+            // }
+
+            // componentDidUpdate() {
+            //     console.log("B---componentDidUpdate");
+            // }
+
             render() {
+                console.log("B-render");
                 return (
                     <div>B</div>
                 )
             }
         }
 
-        ReactDOM.render(<A/>, document.getElementById("test"));
+        ReactDOM.render(<Count/>, document.getElementById("test"));
 
     </script>
 </body>
